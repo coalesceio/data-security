@@ -1,0 +1,137 @@
+fileVersion: 1
+id: c93e77b9-bebc-405e-8e9b-6b6d97ae6c71
+name: DMV_CUSTOMERS
+operation:
+  config:
+    enableMasking: true
+    insertStrategy: UNION
+    maskingOverride: false
+    selMaskPolicy: mask_char
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: dc3ba819-4da7-4826-9c87-492780cdc190
+          stepCounter: c93e77b9-bebc-405e-8e9b-6b6d97ae6c71
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: EMAIL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e1bcc040-84ba-4550-b7a4-25974a2266d9
+                stepCounter: b6ef06c8-f4eb-460a-a596-c040ec7b3c8a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 451cbcfe-643e-4d88-9a67-a4d9993568ee
+          stepCounter: c93e77b9-bebc-405e-8e9b-6b6d97ae6c71
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: JOIN_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 28a7ae3b-46e1-42bd-98a4-2e066d561675
+                stepCounter: b6ef06c8-f4eb-460a-a596-c040ec7b3c8a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 850f733f-1ee2-47d7-81fc-266046bbdca0
+          stepCounter: c93e77b9-bebc-405e-8e9b-6b6d97ae6c71
+        config: {}
+        dataType: NUMBER(6,0)
+        description: ""
+        name: AGE_BAND
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8576dd9f-3451-495b-b565-1022541f5a19
+                stepCounter: b6ef06c8-f4eb-460a-a596-c040ec7b3c8a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 04f6e49f-6754-4012-a88f-6e66aeb61dc5
+          stepCounter: c93e77b9-bebc-405e-8e9b-6b6d97ae6c71
+        config: {}
+        dataType: VARCHAR(18)
+        description: ""
+        name: HOUSEHOLD_INCOME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8a3566fd-6cc1-42af-a832-f864dac33e0d
+                stepCounter: b6ef06c8-f4eb-460a-a596-c040ec7b3c8a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a1d4f3e4-c6b3-47ad-b67c-e658218260a5
+          stepCounter: c93e77b9-bebc-405e-8e9b-6b6d97ae6c71
+        config: {}
+        dataType: VARCHAR(8)
+        description: ""
+        name: MARITAL_STATUS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 67987ef5-e162-482c-8f40-1f0141c77272
+                stepCounter: b6ef06c8-f4eb-460a-a596-c040ec7b3c8a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4b008d6c-cf34-4ede-b34a-319988497bcb
+          stepCounter: c93e77b9-bebc-405e-8e9b-6b6d97ae6c71
+        config: {}
+        dataType: FLOAT
+        description: ""
+        name: HOUSEHOLD_SIZE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3edb61d7-ca0f-4f44-9a49-d774c5ee8ab4
+                stepCounter: b6ef06c8-f4eb-460a-a596-c040ec7b3c8a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 99c1fc36-4080-42b0-baea-b206b28bd0d1
+          stepCounter: c93e77b9-bebc-405e-8e9b-6b6d97ae6c71
+        config: {}
+        dataType: FLOAT
+        description: ""
+        name: TOTAL_ORDER_VALUE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 745de3d5-2ee4-4827-858f-d81379b9f279
+                stepCounter: b6ef06c8-f4eb-460a-a596-c040ec7b3c8a
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SOURCE
+            nodeName: CUSTOMERS
+        join:
+          joinCondition: FROM {{ ref('SOURCE', 'CUSTOMERS') }} "CUSTOMERS"
+        name: DMV_CUSTOMERS
+        noLinkRefs: []
+  name: DMV_CUSTOMERS
+  overrideSQL: false
+  schema: ""
+  sqlType: "455"
+  type: sql
+  version: 1
+type: Node
