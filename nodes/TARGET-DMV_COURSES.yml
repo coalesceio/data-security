@@ -4,8 +4,25 @@ name: DMV_COURSES
 operation:
   config:
     enableMasking: true
+    enablerowacessMasking: true
     insertStrategy: UNION
     maskingOverride: true
+    ovmaskcolumn:
+      items:
+        - smaskcolumn:
+            columnCounter: 6d80f395-728c-422e-9c9a-0bd5ee7d05a6
+            stepCounter: f1c9caf9-68f3-416e-9109-8753a0151e36
+          spolicyname: mask_charsamp
+        - smaskcolumn:
+            columnCounter: ada0e877-5c95-4e6b-903d-529851de659f
+            stepCounter: f1c9caf9-68f3-416e-9109-8753a0151e36
+          spolicyname: mask_numsamp1
+    racccolumn:
+      items:
+        - racccolumnname:
+            columnCounter: 11a76677-83cd-493f-8293-d7631dc8e4f9
+            stepCounter: f1c9caf9-68f3-416e-9109-8753a0151e36
+    rowaccessPolicy: rap_it
     selMaskPolicy: mask_charsamp
     selectDistinct: false
   database: ""

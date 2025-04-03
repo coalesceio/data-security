@@ -4,6 +4,7 @@ name: DMV_CUSTOMERS
 operation:
   config:
     enableMasking: true
+    enablerowacessMasking: false
     insertStrategy: UNION
     maskingOverride: false
     selMaskPolicy: mask_char

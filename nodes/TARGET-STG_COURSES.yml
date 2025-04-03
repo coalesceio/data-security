@@ -1,0 +1,81 @@
+fileVersion: 1
+id: 968ac0a8-505f-441d-a85e-5c14f07e0eb0
+name: STG_COURSES
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0bb4118a-56b0-4b7a-b1f5-abcd892b8c1c
+          stepCounter: 968ac0a8-505f-441d-a85e-5c14f07e0eb0
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: COURSE_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ada0e877-5c95-4e6b-903d-529851de659f
+                stepCounter: f1c9caf9-68f3-416e-9109-8753a0151e36
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3e68d70f-1b11-4c67-9b8f-2ed4f177d016
+          stepCounter: 968ac0a8-505f-441d-a85e-5c14f07e0eb0
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: COURSE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6d80f395-728c-422e-9c9a-0bd5ee7d05a6
+                stepCounter: f1c9caf9-68f3-416e-9109-8753a0151e36
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: db88879c-92ff-4153-879d-26d16679319d
+          stepCounter: 968ac0a8-505f-441d-a85e-5c14f07e0eb0
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: INSTRUCTOR
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 11a76677-83cd-493f-8293-d7631dc8e4f9
+                stepCounter: f1c9caf9-68f3-416e-9109-8753a0151e36
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TARGET
+            nodeName: DMV_COURSES
+        join:
+          joinCondition: FROM {{ ref('TARGET', 'DMV_COURSES') }} "DMV_COURSES"
+        name: STG_COURSES
+        noLinkRefs: []
+  name: STG_COURSES
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

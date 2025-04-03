@@ -3,20 +3,78 @@
     {{ node.override.create.script }}
 
 {% else %}
+
+{#Override Masking sql#}
+
+{% set ns = namespace(column_masking=[],constraint='',raccol=[]) %} 
+
+ {%if config.maskingOverride == true %}
+ 
+      {% for item in config.ovmaskcolumn.get('items') %}
+        {% set column_name = item.smaskcolumn.name %}
+        {% set spolicyname = item.spolicyname %}
+
+       {# Create a temporary dictionary for the current item #}
+       {% set col_dict = {'name': column_name, 'masname': spolicyname} %}
+
+       {# Append the dictionary to the list in the namespace #}
+       {% set ns.column_masking = ns.column_masking + [col_dict] %}
+      {% endfor %}          
+ 
+ {%endif%}
+
+{#Row access policy column names #}
+
+{%-if config.enablerowacessMasking%}
+     
+     {% for item in config.racccolumn.get('items')%}
+       {%- if loop.first -%}
+        {%set ns.raccol = item.racccolumnname.name %}
+       {%else%}
+        {%set ns.raccol = ns.raccol + ',' +item.racccolumnname.name %}
+
+       {%endif%}
+     {%endfor%}
+{% endif %}
+
+
+
+
+
+
+
+
+
     {{ stage('Create View') }}
     CREATE OR REPLACE VIEW {{ ref_no_link(node.location.name, node.name) }}
     (
         {% for col in columns %}
+             {%set ns.masking = ''%}
+             {%set ns.flag= false%}
+            
+            {# Check if col.name matches any name in column_constraints #}
+            {% for item in ns.column_masking %}
+              {% if item.name == col.name and ns.flag== false %}
+                 {% set ns.masking = item.masname %}
+                  {% set ns.flag = true %}  {# Stop the inner loop if match is found #}
+               {% endif %}
+            {% endfor %}
+
             "{{ col.name }}"
-            {#--Use the macro for column matches#}
-    {%- if (config.enableMasking and maskingLookup(col.name) | trim == 'yes') and not config.maskingOverride  %} {{' MASKING POLICY'}} {{config.selMaskPolicy}} {%endif%}
-            {#--Override the Macro for column matches (self selection)#}
-            {%- if config.enableMasking and config.maskingOverride and col.maskingCols %} {{' MASKING POLICY'}} {{config.selMaskPolicy}} {%endif%}
-{% if col.description | length > 0 %} COMMENT '{{ col.description | escape }}'{% endif %}
+            {#Use the macro for column matches#}
+            {%- if (config.enableMasking and maskingLookup(col.name) | trim == 'yes') and not config.maskingOverride  %} {{' MASKING POLICY'}} {{config.selMaskPolicy}} {%endif%}
+
+            {#Override the Macro for column matches (self selection)#}
+            {%- if config.enableMasking and config.maskingOverride and ns.masking %} {{' MASKING POLICY'}} {{ns.masking}} {%endif%}
+
+            {% if col.description | length > 0 -%} COMMENT '{{ col.description | escape }}'{% endif %}
             {%- if not loop.last -%}, {% endif %}
         {% endfor %}
     )
     {%- if node.description | length > 0 %} COMMENT = '{{ node.description | escape }}'
+     {% endif %}
+     {%-if config.enablerowacessMasking%}
+     WITH ROW ACCESS POLICY {{config.rowaccessPolicy}} ON({{ns.raccol}})
      {% endif %}
     AS
     {% for source in sources %}
