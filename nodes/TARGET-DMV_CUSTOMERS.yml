@@ -5,7 +5,7 @@ operation:
   config:
     enableMasking: true
     enablerowacessMasking: false
-    groupByAll: true
+    groupByAll: false
     insertStrategy: UNION
     maskingOverride: false
     selMaskPolicy: mask_char
@@ -88,7 +88,7 @@ operation:
           - columnReferences:
               - columnCounter: 67987ef5-e162-482c-8f40-1f0141c77272
                 stepCounter: b6ef06c8-f4eb-460a-a596-c040ec7b3c8a
-            transform: ""
+            transform: substr("CUSTOMERS"."MARITAL_STATUS",1,5)
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 4b008d6c-cf34-4ede-b34a-319988497bcb
@@ -120,14 +120,17 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          CUSTOMERS: b6ef06c8-f4eb-460a-a596-c040ec7b3c8a
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: SOURCE
             nodeName: CUSTOMERS
         join:
-          joinCondition: FROM {{ ref('SOURCE', 'CUSTOMERS') }} "CUSTOMERS"
+          joinCondition: |-
+            FROM {{ ref('SOURCE', 'CUSTOMERS') }} "CUSTOMERS"
+            where "CUSTOMERS"."EMAIL" like '%@%'
         name: DMV_CUSTOMERS
         noLinkRefs: []
   name: DMV_CUSTOMERS

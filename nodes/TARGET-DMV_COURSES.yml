@@ -5,6 +5,7 @@ operation:
   config:
     enableMasking: true
     enablerowacessMasking: true
+    groupByAll: false
     insertStrategy: UNION
     maskingOverride: true
     ovmaskcolumn:

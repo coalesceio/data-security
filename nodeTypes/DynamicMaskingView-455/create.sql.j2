@@ -1,14 +1,20 @@
-{% if node.override.create.enabled %}
-    
-    {{ node.override.create.script }}
+{#
+    Copyright (c) 2023 Coalesce. All rights reserved.
+This script and its associated documentation are confidential and proprietary to Coalesce.
+Unauthorized reproduction, distribution, or disclosure of this material is strictly prohibited.
+Coalesce permits you to copy and modify this script for the purposes of using with Coalsce but
+does not permit copying or modification for any other purpose.  
+#}
+{# == Node Type Version        : 1  == #}
+{# == Node Type Name           : Dynamic Masking View == #}
+{# == Node Type Description    : Dynamic Masking View node creates a view with masking policies applied to a column within a table or view == #}
 
-{% else %}
 
-{#Override Masking sql#}
+    {#Override Masking sql#}
 
-{% set ns = namespace(column_masking=[],constraint='',raccol=[]) %} 
+    {% set ns = namespace(column_masking=[],constraint='',raccol=[]) %} 
 
- {%if config.maskingOverride == true %}
+    {%if config.maskingOverride == true %}
  
       {% for item in config.ovmaskcolumn.get('items') %}
         {% set column_name = item.smaskcolumn.name %}
@@ -21,11 +27,11 @@
        {% set ns.column_masking = ns.column_masking + [col_dict] %}
       {% endfor %}          
  
- {%endif%}
+    {%endif%}
 
-{#Row access policy column names #}
+    {#Row access policy column names #}
 
-{%-if config.enablerowacessMasking%}
+   {%-if config.enablerowacessMasking%}
      
      {% for item in config.racccolumn.get('items')%}
        {%- if loop.first -%}
@@ -35,9 +41,9 @@
 
        {%endif%}
      {%endfor%}
-{% endif %}
+   {% endif %}
 
-    {{ stage('Create View') }}
+    {{ stage('Create Data Masking View') }}
     CREATE OR REPLACE VIEW {{ ref_no_link(node.location.name, node.name) }}
     (
         {% for col in columns %}
@@ -87,4 +93,4 @@
             {% endif %}
         {% endif %}
     {% endfor %}
-{% endif %}
+
