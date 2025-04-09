@@ -5,6 +5,7 @@ operation:
   config:
     enableMasking: true
     enablerowacessMasking: false
+    groupByAll: true
     insertStrategy: UNION
     maskingOverride: false
     selMaskPolicy: mask_char
