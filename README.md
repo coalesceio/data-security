@@ -69,3 +69,35 @@ The Work node type has four configuration groups:
 
 ![image](https://github.com/user-attachments/assets/d4886da5-9f92-4c76-b11f-831d257104d7)
 
+### Dynamic Masking View Deployment
+
+#### Dynamic Masking View Initial Deployment
+
+When deployed for the first time into an environment the View node will execute the Create View stage.
+
+| **Stage** | **Description** |
+|-----------|----------------|
+| **Create View** | This will execute a CREATE OR REPLACE statement and create a View in the target environment |
+
+#### Dynamic Masking View Redeployment
+
+The subsequent deployment of View node with changes in view definition, adding table description, adding secure option or renaming view results in deleting the existing view and recreating the view.
+
+The following stages are executed:
+
+| **Stage** | **Description** |
+|-----------|----------------|
+| **Delete View** | Removes existing view |
+| **Create View** | Creates new view with updated definition |
+
+#### Dynamic Masking View Undeployment
+
+If a View Node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher level environment then the View in the target environment will be dropped.
+
+This is executed in the below stage:
+
+| **Stage** | **Description** |
+|-----------|----------------|
+| **Delete View** | Removes the view from the environment |
+
+## Code
