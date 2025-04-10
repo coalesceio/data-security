@@ -17,6 +17,15 @@ This node type offers to apply (column-level data masking)[https://docs.snowflak
 
 ### Prerequisites for Dynamic Masking View
 
+* Create a snowflake masking policy for column-level security and row level access policy for row-level security.This is used in the node type to create a masked view.
+
+Snowflake supports masking policies as a schema-level object to protect sensitive data from unauthorized access while allowing authorized users to access sensitive data at query runtime.
+
+#### Examples
+
+![image](https://github.com/user-attachments/assets/21b89bd5-60fb-4dfb-b1ed-c6e1eb7a6cb1)
+
+![image](https://github.com/user-attachments/assets/b77cfcca-e465-429d-88c5-d6bcc0912890)
 
 ### Dynamic Masking View Node Configuration
 
