@@ -1,0 +1,109 @@
+fileVersion: 1
+id: e98f7fff-1a8c-4a8c-b818-ad059912253e
+name: DMV_QUARTERLY_SALES
+operation:
+  config:
+    enableMasking: true
+    enablerowacessMasking: false
+    groupByAll: false
+    insertStrategy: UNION
+    maskStorageLocationName: TARGET
+    maskingOverride: true
+    ovmaskcolumn:
+      items:
+        - smaskcolumn:
+            columnCounter: 2b1c540e-36fe-442d-9fb6-b99547da93f8
+            stepCounter: e98f7fff-1a8c-4a8c-b818-ad059912253e
+          spolicyname: MASK_NUMSAMP1
+    racccolumn:
+      items:
+        - {}
+    raccessStorageLocationName: ""
+    rowaccessPolicy: ""
+    selMaskPolicy: ""
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cc18beb4-6d34-43c2-b1df-e5f0d0a4ee34
+          stepCounter: e98f7fff-1a8c-4a8c-b818-ad059912253e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: EMPID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 43d2425b-ef31-41a4-ba2f-eea7d5b689ca
+                stepCounter: 154d1951-ef50-4e02-9b03-562e32788ba0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2b1c540e-36fe-442d-9fb6-b99547da93f8
+          stepCounter: e98f7fff-1a8c-4a8c-b818-ad059912253e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: AMOUNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6c4acc7d-5314-47d5-be54-e914a6e90336
+                stepCounter: 154d1951-ef50-4e02-9b03-562e32788ba0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4c073fe1-aae6-4f8b-b9dc-1bbe4d21ff58
+          stepCounter: e98f7fff-1a8c-4a8c-b818-ad059912253e
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: QUARTER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 704ccb37-5193-43e1-a5f3-f2ffec14440b
+                stepCounter: 154d1951-ef50-4e02-9b03-562e32788ba0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0dd89492-f388-405a-9a8e-e1e9817cab8a
+          stepCounter: e98f7fff-1a8c-4a8c-b818-ad059912253e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: DISCOUNT_PERCENT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: aaa08ce2-eb65-4d3f-910c-0de50480aa7a
+                stepCounter: 154d1951-ef50-4e02-9b03-562e32788ba0
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SOURCE
+            nodeName: QUARTERLY_SALES
+        join:
+          joinCondition: FROM {{ ref('SOURCE', 'QUARTERLY_SALES') }} "QUARTERLY_SALES"
+        name: DMV_QUARTERLY_SALES
+        noLinkRefs: []
+  name: DMV_QUARTERLY_SALES
+  overrideSQL: false
+  schema: ""
+  sqlType: "455"
+  type: sql
+  version: 1
+type: Node
