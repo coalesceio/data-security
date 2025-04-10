@@ -1,0 +1,33 @@
+fileVersion: 1
+id: "1"
+macroString: |+
+  {#-- The below block of code initialises variables in case of node typess using advance deployment strategy #}
+
+  {% if desiredState %}
+      {% set columns = desiredState.columns %}
+      {% set storageLocations = desiredState.storageLocations %}
+      {% set config = desiredState.config %}
+      {% set sources = desiredState.sources %}
+      {% set node = desiredState.node %}
+      {% set parameters = desiredState.parameters %}
+  {% endif %}
+
+  {%-macro maskingLookup(colname) %}
+  {#--USAGE:{{maskingLookup(colname)}}#}
+  {#--NOTES:Used to apply Dynamic Masking to columns based on pattern matching the follow list#}
+  {% set maskList =
+        ['PHONE',
+        'ADDRESS',
+        'NAME',
+        'ACCOUNT','EMAIL','INCOME']
+  %}
+  {% set col = namespace(match = 'no') %}
+  {% for mask in maskList%}  
+      {% if mask in colname%} {% set col.match = 'yes'%} {%endif%}
+  {% endfor%}
+  {{-col.match | trim-}}
+  {%- endmacro -%}
+
+
+name: macro
+type: Macro

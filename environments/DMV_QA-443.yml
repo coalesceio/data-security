@@ -1,0 +1,14 @@
+fileVersion: 1
+id: "443"
+mappingDefinitions:
+  SOURCE:
+    database: ANANDHIS_DEV
+    schema: SOURCE_DATA
+  TARGET:
+    database: ANANDHIS_DEV
+    schema: TARGET
+  TARGET_DEP:
+    database: ANANDHIS_DEV
+    schema: TARGET_ACC
+name: DMV_QA
+type: Environment

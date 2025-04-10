@@ -1,0 +1,122 @@
+fileVersion: 1
+id: "455"
+isDisabled: false
+metadata:
+  defaultStorageLocation: null
+  error: null
+  nodeMetadataSpec: |
+    capitalized: Dynamic Masking View
+    short: DMV
+    tagColor: 'purple'
+    isDisabled: true
+    plural: Views
+
+    config:
+      - groupName: Options
+        items: 
+        
+        - displayName: Distinct
+          attributeName: selectDistinct
+          type: toggleButton
+          enableIf: "{% if config.groupByAll or  node.override.create.enabled %} false {% else %} true {% endif %}"
+          default: false
+        
+        - displayName: Group By All
+          attributeName: groupByAll
+          type: toggleButton
+          default: false
+          enableIf: "{% if config.selectDistinct or  node.override.create.enabled %} false {% else %} true {% endif %}"    
+
+        - type: multisourceToggle
+
+        - displayName: Multi Source Strategy
+          attributeName: insertStrategy
+          type: dropdownSelector
+          default: UNION
+          options:
+          - "UNION"
+          - "UNION ALL" 
+          isRequired: true
+          enableIf: "{% if node.isMultisource %} true {% else %} false {% endif %}"
+
+        - type: label
+          displayName: A given table or view column can be specified in either a row access policy signature or a masking policy signature. 
+
+        - type: toggleButton
+          attributeName: enableMasking
+          displayName: Enable Column Masking
+          default: false
+
+        - displayName: Coalesce Storage Location of Data Masking Policy
+          attributeName: maskStorageLocationName
+          type: textBox
+          enableIf: "{% if config.enableMasking %} true {% else %} false {% endif %}"
+
+        - type: textBox
+          displayName: Snowflake Masking Policy
+          attributeName: selMaskPolicy
+          enableIf: "{% if config.enableMasking and config.maskingOverride == false%} true {% else %} false {% endif %}"
+
+        - type: toggleButton
+          attributeName: maskingOverride
+          displayName: Override Masking columns
+          default: false
+          enableIf: "{% if config.enableMasking %} true {% else %} false {% endif %}"
+
+        - type: tabular
+          displayName: 'Override Masking Columns'
+          attributeName: ovmaskcolumn
+          columns:
+
+          -  type: columnDropdownSelector
+             displayName: Snowflake masking Column Name
+             attributeName: smaskcolumn
+             isRequired: false
+      
+          -  type: textBox
+             displayName: Snowflake masking policy Name
+             attributeName: spolicyname
+             isRequired: false
+      
+          isRequired: false
+          enableIf: "{% if (config.maskingOverride == true and config.enableMasking == true ) %} true {% else %} false {% endif %}"
+
+
+        - type: toggleButton
+          attributeName: enablerowacessMasking
+          displayName: Enable row level security
+          default: false
+
+        - displayName: Coalesce Storage Location of row access policy
+          attributeName: raccessStorageLocationName
+          type: textBox
+          enableIf: "{% if config.enablerowacessMasking %} true {% else %} false {% endif %}"
+
+        - type: textBox
+          displayName: Row access policy name
+          attributeName: rowaccessPolicy
+          enableIf: "{% if config.enablerowacessMasking %} true {% else %} false {% endif %}"
+
+        - type: tabular
+          displayName: Row access column name
+          attributeName: racccolumn
+          columns:
+        
+          -  type: columnDropdownSelector
+             displayName: Column Name
+             attributeName: racccolumnname
+
+          isRequired: false
+          enableIf: "{% if config.enablerowacessMasking %} true {% else %} false {% endif %}"
+
+      - groupName: Hidden Config
+        enableIf: "false"
+        items:
+        - displayName: Type
+          type: materializationSelector
+          default:  view
+          options:
+          - view
+          isRequired: false     
+name: Dynamic Masking View
+type: NodeType
