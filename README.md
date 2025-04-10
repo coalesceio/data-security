@@ -101,3 +101,9 @@ This is executed in the below stage:
 | **Delete View** | Removes the view from the environment |
 
 ## Code
+### View Code
+
+* [Node definition](https://github.com/coalesceio/data-security/blob/main/nodeTypes/DynamicMaskingView-455/definition.yml)
+* [Create Template](https://github.com/coalesceio/data-security/blob/main/nodeTypes/DynamicMaskingView-455/create.sql.j2)
+
+[Macros](https://github.com/coalesceio/data-security/blob/main/macros/macro-1.yml)
