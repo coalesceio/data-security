@@ -7,7 +7,7 @@ The Coalesce Data Security Package includes:
 
 ---
 
-### Dynamic Masking View
+## Dynamic Masking View
 
 The Coalesce Dynamic Data Masking View node type allows you to create a view with masking policies applied to a column within a table or view.
 
