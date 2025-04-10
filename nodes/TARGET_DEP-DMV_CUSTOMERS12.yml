@@ -1,6 +1,6 @@
 fileVersion: 1
 id: c93e77b9-bebc-405e-8e9b-6b6d97ae6c71
-name: DMV_CUSTOMERS
+name: DMV_CUSTOMERS12
 operation:
   config:
     enableMasking: true
@@ -132,9 +132,9 @@ operation:
           joinCondition: |-
             FROM {{ ref('SOURCE', 'CUSTOMERS') }} "CUSTOMERS"
             where "CUSTOMERS"."EMAIL" like '%@%'
-        name: DMV_CUSTOMERS
+        name: DMV_CUSTOMERS12
         noLinkRefs: []
-  name: DMV_CUSTOMERS
+  name: DMV_CUSTOMERS12
   overrideSQL: false
   schema: ""
   sqlType: "455"
