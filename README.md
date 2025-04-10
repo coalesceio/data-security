@@ -8,9 +8,9 @@ The Coalesce Data Security Package includes:
 
 ### Dynamic Masking View
 
-The Coalesce Dynamic Data Masking View node type allows you to create a view with masking policies applied to a column within a table or view.(Dynamic Data Masking)[] is a Column-level Security feature that uses masking policies to selectively mask data at query time
+The Coalesce Dynamic Data Masking View node type allows you to create a view with masking policies applied to a column within a table or view.(Dynamic Data Masking)[https://docs.snowflake.com/en/user-guide/security-column-ddm-use] is a Column-level Security feature that uses masking policies to selectively mask data at query time.
 Depending on the masking policy conditions, the SQL execution context, and role hierarchy, Snowflake query operators may see the plain-text value, a partially masked value, or a fully masked value.
-This node type offers to apply (column-level data masking)[] and (row-level access policy)[] to the target view.
+This node type offers to apply (column-level data masking)[https://docs.snowflake.com/user-guide/security-column-intro] and (row-level access policy)[https://docs.snowflake.com/en/user-guide/security-row-intro] to the target view.
 
 ### Prerequisites for Dynamic Masking View
 
