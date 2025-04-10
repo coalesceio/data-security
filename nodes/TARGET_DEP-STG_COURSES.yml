@@ -12,7 +12,7 @@ operation:
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: TARGET
+  locationName: TARGET_DEP
   materializationType: table
   metadata:
     appliedNodeTests: []
@@ -62,14 +62,15 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          DMV_COURSES: f1c9caf9-68f3-416e-9109-8753a0151e36
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: TARGET
+          - locationName: TARGET_DEP
             nodeName: DMV_COURSES
         join:
-          joinCondition: FROM {{ ref('TARGET', 'DMV_COURSES') }} "DMV_COURSES"
+          joinCondition: FROM {{ ref('TARGET_DEP', 'DMV_COURSES') }} "DMV_COURSES"
         name: STG_COURSES
         noLinkRefs: []
   name: STG_COURSES

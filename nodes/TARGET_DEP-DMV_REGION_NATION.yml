@@ -22,7 +22,7 @@ operation:
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: TARGET
+  locationName: TARGET_DEP
   materializationType: table
   metadata:
     appliedNodeTests: []
