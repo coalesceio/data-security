@@ -22,6 +22,14 @@ This node type offers to apply [column-level data masking](https://docs.snowflak
 
 Snowflake supports masking policies as a schema-level object to protect sensitive data from unauthorized access while allowing authorized users to access sensitive data at query runtime.
 
+### Limitations of Dynamic Masking View
+
+* A column can only be associated with one masking policy at a time.
+* The input and output data types in a masking policy must match; you can't define a policy to target a timestamp and return a string.
+* Once a materialized view is created from a table, you cannot set masking policies on any of its columns
+* Cannot apply a masking policy to a table column if a materialized view is already created from the underlying table.
+* A given table or view column can be specified in either a row access policy signature or a masking policy signature.
+
 #### Examples
 
 ![image](https://github.com/user-attachments/assets/21b89bd5-60fb-4dfb-b1ed-c6e1eb7a6cb1)
