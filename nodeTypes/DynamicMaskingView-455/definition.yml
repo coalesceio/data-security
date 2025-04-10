@@ -79,7 +79,7 @@ metadata:
 
         - type: toggleButton
           attributeName: enablerowacessMasking
-          displayName: Enable row level masking
+          displayName: Enable row level security
           default: true
 
         - type: textBox
