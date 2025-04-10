@@ -109,6 +109,14 @@ metadata:
           isRequired: false
           enableIf: "{% if config.enablerowacessMasking %} true {% else %} false {% endif %}"
 
-        
+      - groupName: Hidden Config
+        enableIf: "false"
+        items:
+        - displayName: Type
+          type: materializationSelector
+          default:  view
+          options:
+          - view
+          isRequired: false     
 name: Dynamic Masking View
 type: NodeType
