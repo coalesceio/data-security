@@ -45,7 +45,6 @@ The Work node type has four configuration groups:
 
 #### Options
 
-
 | **Options** | **Description** |
 |---------|-------------|
 | **Distinct** | Toggle: True/False<br/>**True**: Group by All is invisible. DISTINCT data is chosen for processing<br/>**False**: Group by All is visible |
@@ -102,7 +101,6 @@ This is executed in the below stage:
 | **Delete View** | Removes the view from the environment |
 
 ## Code
-### View Code
 
 * [Node definition](https://github.com/coalesceio/data-security/blob/main/nodeTypes/DynamicMaskingView-455/definition.yml)
 * [Create Template](https://github.com/coalesceio/data-security/blob/main/nodeTypes/DynamicMaskingView-455/create.sql.j2)
