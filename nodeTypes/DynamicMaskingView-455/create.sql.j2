@@ -9,8 +9,20 @@ does not permit copying or modification for any other purpose.
 {# == Node Type Name           : Dynamic Masking View == #}
 {# == Node Type Description    : Dynamic Masking View node creates a view with masking policies applied to a column within a table or view == #}
 
+{# Dynamic data masking policy location #}
 
-    {#Override Masking sql#}
+{% set maskStorageLocationName = config.maskStorageLocationName|trim %}
+{% set dbmask =  ref_no_link(config.maskStorageLocationName, node.name).split('.')[0] %}
+{% set schmask =  ref_no_link(config.maskStorageLocationName, node.name).split('.')[1]%}
+
+
+{# Row access policy location #}
+
+{% set racessStorageLocationName = config.raccessStorageLocationName|trim %}
+{% set dbaccess =  ref_no_link(racessStorageLocationName, node.name).split('.')[0] %}
+{% set schaccess =  ref_no_link(racessStorageLocationName, node.name).split('.')[1]%}
+
+{# Override Masking sql #}
 
     {% set ns = namespace(column_masking=[],constraint='',raccol=[]) %} 
 
@@ -60,10 +72,10 @@ does not permit copying or modification for any other purpose.
 
             "{{ col.name }}"
             {#Use the macro for column matches#}
-            {%- if (config.enableMasking and maskingLookup(col.name) | trim == 'yes') and not config.maskingOverride  %} {{' MASKING POLICY'}} {{config.selMaskPolicy}} {%endif%}
+            {%- if (config.enableMasking and maskingLookup(col.name) | trim == 'yes') and not config.maskingOverride  %} {{' MASKING POLICY'}} {{dbmask}}.{{schmask}}."{{config.selMaskPolicy}}"{%endif%}
 
             {#Override the Macro for column matches (self selection)#}
-            {%- if config.enableMasking and config.maskingOverride and ns.masking %} {{' MASKING POLICY'}} {{ns.masking}} {%endif%}
+            {%- if config.enableMasking and config.maskingOverride and ns.masking %} {{' MASKING POLICY'}} {{dbmask}}.{{schmask}}."{{ns.masking}}" {%endif%}
 
             {% if col.description | length > 0 -%} COMMENT '{{ col.description | escape }}'{% endif %}
             {%- if not loop.last -%}, {% endif %}
@@ -72,7 +84,7 @@ does not permit copying or modification for any other purpose.
     {%- if node.description | length > 0 %} COMMENT = '{{ node.description | escape }}'
      {% endif %}
      {%-if config.enablerowacessMasking%}
-     WITH ROW ACCESS POLICY {{config.rowaccessPolicy}} ON({{ns.raccol}})
+     WITH ROW ACCESS POLICY {{dbaccess}}.{{schaccess}}.{{config.rowaccessPolicy}} ON({{ns.raccol}})
      {% endif %}
     AS
     {% for source in sources %}

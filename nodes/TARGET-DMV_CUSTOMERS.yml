@@ -7,8 +7,9 @@ operation:
     enablerowacessMasking: false
     groupByAll: false
     insertStrategy: UNION
+    maskStorageLocationName: TARGET
     maskingOverride: false
-    selMaskPolicy: mask_char
+    selMaskPolicy: MASK_CHAR
     selectDistinct: false
   database: ""
   deployEnabled: true

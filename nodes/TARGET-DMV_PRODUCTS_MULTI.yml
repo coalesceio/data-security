@@ -7,13 +7,14 @@ operation:
     enablerowacessMasking: false
     groupByAll: false
     insertStrategy: UNION
+    maskStorageLocationName: TARGET
     maskingOverride: true
     ovmaskcolumn:
       items:
         - smaskcolumn:
             columnCounter: 24fffe5d-4f19-4abe-a6a4-10f721605b44
             stepCounter: 631f6098-e097-4a7d-9c86-dc5fbd47e77d
-          spolicyname: mask_char
+          spolicyname: MASK_CHAR
     racccolumn:
       items:
         - {}

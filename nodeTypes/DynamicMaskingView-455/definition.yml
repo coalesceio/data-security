@@ -45,8 +45,13 @@ metadata:
         - type: toggleButton
           attributeName: enableMasking
           displayName: Enable Column Masking
-          default: true
-        
+          default: false
+
+        - displayName: Coalesce Storage Location of Data Masking Policy
+          attributeName: maskStorageLocationName
+          type: textBox
+          enableIf: "{% if config.enableMasking %} true {% else %} false {% endif %}"
+
         - type: textBox
           displayName: Snowflake Masking Policy
           attributeName: selMaskPolicy
@@ -80,13 +85,17 @@ metadata:
         - type: toggleButton
           attributeName: enablerowacessMasking
           displayName: Enable row level security
-          default: true
+          default: false
+
+        - displayName: Coalesce Storage Location of row access policy
+          attributeName: raccessStorageLocationName
+          type: textBox
+          enableIf: "{% if config.enablerowacessMasking %} true {% else %} false {% endif %}"
 
         - type: textBox
           displayName: Row access policy name
           attributeName: rowaccessPolicy
           enableIf: "{% if config.enablerowacessMasking %} true {% else %} false {% endif %}"
-
 
         - type: tabular
           displayName: Row access column name
