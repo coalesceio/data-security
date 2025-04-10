@@ -1,6 +1,6 @@
 fileVersion: 1
 id: e98f7fff-1a8c-4a8c-b818-ad059912253e
-name: DMV_QUARTERLY_SALES
+name: DMV_QUARTERLY_SALES12
 operation:
   config:
     enableMasking: true
@@ -98,9 +98,9 @@ operation:
             nodeName: QUARTERLY_SALES
         join:
           joinCondition: FROM {{ ref('SOURCE', 'QUARTERLY_SALES') }} "QUARTERLY_SALES"
-        name: DMV_QUARTERLY_SALES
+        name: DMV_QUARTERLY_SALES12
         noLinkRefs: []
-  name: DMV_QUARTERLY_SALES
+  name: DMV_QUARTERLY_SALES12
   overrideSQL: false
   schema: ""
   sqlType: "455"
