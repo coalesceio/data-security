@@ -1,0 +1,135 @@
+fileVersion: 1
+id: 631f6098-e097-4a7d-9c86-dc5fbd47e77d
+name: DMV_PRODUCTS_MULTI
+operation:
+  config:
+    enableMasking: true
+    enablerowacessMasking: false
+    groupByAll: false
+    insertStrategy: UNION
+    maskStorageLocationName: TARGET
+    maskingOverride: true
+    ovmaskcolumn:
+      items:
+        - smaskcolumn:
+            columnCounter: 24fffe5d-4f19-4abe-a6a4-10f721605b44
+            stepCounter: 631f6098-e097-4a7d-9c86-dc5fbd47e77d
+          spolicyname: MASK_CHAR
+    racccolumn:
+      items:
+        - {}
+    rowaccessPolicy: ""
+    selMaskPolicy: mask_char
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: true
+  locationName: TARGET_DEP
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0f34143d-a935-4846-9d41-7c59aa83b8ac
+          stepCounter: 631f6098-e097-4a7d-9c86-dc5fbd47e77d
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: PRODUCT_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 43e3e432-21f8-48cc-8b33-ec2d3fc4d3d0
+                stepCounter: 2994b0aa-6353-4990-ad24-6f208ffa9a6d
+            transform: ""
+          - columnReferences:
+              - columnCounter: e036d257-fca2-443b-b8eb-2a68594bca55
+                stepCounter: b32a37a1-4999-4921-8994-0bb64d9b4234
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 24fffe5d-4f19-4abe-a6a4-10f721605b44
+          stepCounter: 631f6098-e097-4a7d-9c86-dc5fbd47e77d
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: PRODUCT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9a831cd3-cf47-4fe8-89f2-a9aacbd6818c
+                stepCounter: 2994b0aa-6353-4990-ad24-6f208ffa9a6d
+            transform: ""
+          - columnReferences:
+              - columnCounter: 0f826e1e-e9ef-4f40-8386-09fd37b4f301
+                stepCounter: b32a37a1-4999-4921-8994-0bb64d9b4234
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ec1bdcb1-2f2a-4ef1-8bc5-235e10a7cd1c
+          stepCounter: 631f6098-e097-4a7d-9c86-dc5fbd47e77d
+        config: {}
+        dataType: VARCHAR(100)
+        description: ""
+        name: BRAND
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b6e10eeb-2be5-4e18-aa8f-ca2bd2ccdb00
+                stepCounter: 2994b0aa-6353-4990-ad24-6f208ffa9a6d
+            transform: ""
+          - columnReferences:
+              - columnCounter: 667023ac-346d-4c1f-891e-092a1e1fc443
+                stepCounter: b32a37a1-4999-4921-8994-0bb64d9b4234
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0479d0b6-dd19-4927-b679-02aa594359eb
+          stepCounter: 631f6098-e097-4a7d-9c86-dc5fbd47e77d
+        config: {}
+        dataType: VARCHAR(50)
+        description: ""
+        name: COLOUR
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 748e1299-ef2e-42a5-b5c6-5b70d4adda0b
+                stepCounter: 2994b0aa-6353-4990-ad24-6f208ffa9a6d
+            transform: ""
+          - columnReferences:
+              - columnCounter: 0e940efe-b820-45d7-b86c-8e5309d3df1e
+                stepCounter: b32a37a1-4999-4921-8994-0bb64d9b4234
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SOURCE
+            nodeName: PRODUCTS
+        join:
+          joinCondition: FROM {{ ref('SOURCE', 'PRODUCTS') }} "PRODUCTS"
+        name: DMV_PRODUCTS_MULTI
+        noLinkRefs: []
+      - aliases:
+          PRODUCTS_GROCERY: b32a37a1-4999-4921-8994-0bb64d9b4234
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SOURCE
+            nodeName: PRODUCTS_GROCERY
+        join:
+          joinCondition: FROM {{ ref('SOURCE', 'PRODUCTS_GROCERY') }} "PRODUCTS_GROCERY"
+        name: PRODUCTS_GROCERY
+        noLinkRefs: []
+  name: DMV_PRODUCTS_MULTI
+  overrideSQL: false
+  schema: ""
+  sqlType: "455"
+  type: sql
+  version: 1
+type: Node

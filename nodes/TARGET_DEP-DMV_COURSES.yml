@@ -1,0 +1,102 @@
+fileVersion: 1
+id: f1c9caf9-68f3-416e-9109-8753a0151e36
+name: DMV_COURSES
+operation:
+  config:
+    enableMasking: true
+    enablerowacessMasking: true
+    groupByAll: false
+    insertStrategy: UNION
+    maskStorageLocationName: TARGET
+    maskingOverride: true
+    ovmaskcolumn:
+      items:
+        - smaskcolumn:
+            columnCounter: 6d80f395-728c-422e-9c9a-0bd5ee7d05a6
+            stepCounter: f1c9caf9-68f3-416e-9109-8753a0151e36
+          spolicyname: MASK_CHARSAMP
+        - smaskcolumn:
+            columnCounter: ada0e877-5c95-4e6b-903d-529851de659f
+            stepCounter: f1c9caf9-68f3-416e-9109-8753a0151e36
+          spolicyname: MASK_NUMSAMP1
+    racccolumn:
+      items:
+        - racccolumnname:
+            columnCounter: 11a76677-83cd-493f-8293-d7631dc8e4f9
+            stepCounter: f1c9caf9-68f3-416e-9109-8753a0151e36
+    raccessStorageLocationName: TARGET
+    rowaccessPolicy: RAP_IT
+    selMaskPolicy: mask_charsamp
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET_DEP
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ada0e877-5c95-4e6b-903d-529851de659f
+          stepCounter: f1c9caf9-68f3-416e-9109-8753a0151e36
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: COURSE_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9ba15af2-c8a3-428a-899b-9aebd7578dbc
+                stepCounter: eaccb066-4e13-4c98-8b76-e0701984c244
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6d80f395-728c-422e-9c9a-0bd5ee7d05a6
+          stepCounter: f1c9caf9-68f3-416e-9109-8753a0151e36
+        config:
+          maskingCols: true
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: COURSE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 199e0553-5620-4826-883c-a5745e0d0691
+                stepCounter: eaccb066-4e13-4c98-8b76-e0701984c244
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 11a76677-83cd-493f-8293-d7631dc8e4f9
+          stepCounter: f1c9caf9-68f3-416e-9109-8753a0151e36
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: INSTRUCTOR
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 680dd917-2447-4151-b842-4b03302da16a
+                stepCounter: eaccb066-4e13-4c98-8b76-e0701984c244
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SOURCE
+            nodeName: COURSES
+        join:
+          joinCondition: FROM {{ ref('SOURCE', 'COURSES') }} "COURSES"
+        name: DMV_COURSES
+        noLinkRefs: []
+  name: DMV_COURSES
+  overrideSQL: false
+  schema: ""
+  sqlType: "455"
+  type: sql
+  version: 1
+type: Node

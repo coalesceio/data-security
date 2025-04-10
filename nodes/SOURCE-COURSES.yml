@@ -1,0 +1,73 @@
+fileVersion: 1
+id: eaccb066-4e13-4c98-8b76-e0701984c244
+name: COURSES
+operation:
+  database: ""
+  deployEnabled: true
+  description: ""
+  locationName: SOURCE
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9ba15af2-c8a3-428a-899b-9aebd7578dbc
+          stepCounter: eaccb066-4e13-4c98-8b76-e0701984c244
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: COURSE_ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 199e0553-5620-4826-883c-a5745e0d0691
+          stepCounter: eaccb066-4e13-4c98-8b76-e0701984c244
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: COURSE_NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 680dd917-2447-4151-b842-4b03302da16a
+          stepCounter: eaccb066-4e13-4c98-8b76-e0701984c244
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: INSTRUCTOR
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+  name: COURSES
+  schema: ""
+  sqlType: Source
+  type: sourceInput
+  version: 1
+type: Node
