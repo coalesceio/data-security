@@ -2,7 +2,7 @@
 
 The Coalesce Data Security Package includes:
 
-* [Dynamic Masking View](dynamic-masking-view)
+* [Dynamic Masking View](Dynamic-Masking-View)
 * [Code](code)
 
 ---
