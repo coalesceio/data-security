@@ -51,10 +51,21 @@ The Work node type has four configuration groups:
 | **Group by All** | Toggle: True/False<br/>**True**: DISTINCT is invisible. Data is grouped by all columns for processing<br/>**False**: DISTINCT is visible |
 | **Multi Source** | Toggle: True/False<br/>Implementation of SQL UNIONs<br/>**True**: Combine multiple sources in a single node<br/>True Options:<br/>- **UNION**: Combines with duplicate elimination<br/>- **UNION ALL**: Combines without duplicate elimination<br/>**False**: Single source node or multiple sources combined using a join |
 | **Enable Column Masking** | Toggle: True/False<br/> Provides option to enable column masking |
+| **Coalesce Storage Location of Data Masking Policy**| Enabled when Column Masking is true.Storage location in Coalesce where the Masking policy resides |
 | **Snowflake Masking Policy**| Name of snowflake masking policy to mask columns of available column patterns |
 | **Override Masking columns**| Toggle: True/False<br/> Provides option to enable masking for specific column specified config |
 | **Snowflake masking Column Name**| Enabled when Override Masking columns option is true.The column on which data masking to be applied |
 | **Snowflake masking policy Name**| Name of the snowflake masking policy.Different masking policy for different columns is possible |
-| **Enable row level Masking** | Toggle: True/False<br/> Provides option to enable row level access restriction |
+| **Enable row level security** | Toggle: True/False<br/> Provides option to enable row level access restriction |
+| **Coalesce Storage Location of row access policy**| Enabled when row level security is true.Storage location in Coalesce where the Row access policy resides |
 | **Row access policy name**| Name of snowflake row access policy |
-| **Row access column name**| The column name(s) on whose availability in the table ,row level access is provided|
+| **Row access column name**| The column name(s) on whose availability in the table ,row level access is enabled|
+
+### Enable Column Masking
+
+![image](https://github.com/user-attachments/assets/5b4d6d43-acee-40b3-87bb-e90af053f7dd)
+
+### Enable row level security 
+
+![image](https://github.com/user-attachments/assets/d4886da5-9f92-4c76-b11f-831d257104d7)
+
