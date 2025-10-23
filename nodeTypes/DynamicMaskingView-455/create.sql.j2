@@ -11,16 +11,19 @@ does not permit copying or modification for any other purpose.
 
 {# Dynamic data masking policy location #}
 
-{% set maskStorageLocationName = config.maskStorageLocationName|trim %}
-{% set dbmask =  ref_no_link(config.maskStorageLocationName, node.name).split('.')[0] %}
-{% set schmask =  ref_no_link(config.maskStorageLocationName, node.name).split('.')[1]%}
+{%if config.enableMasking%}
+  {% set maskStorageLocationName = config.maskStorageLocationName|trim %}
+  {% set dbmask =  ref_no_link(config.maskStorageLocationName, node.name).split('.')[0] %}
+  {% set schmask =  ref_no_link(config.maskStorageLocationName, node.name).split('.')[1]%}
+{%endif%}
 
 
 {# Row access policy location #}
-
-{% set racessStorageLocationName = config.raccessStorageLocationName|trim %}
-{% set dbaccess =  ref_no_link(racessStorageLocationName, node.name).split('.')[0] %}
-{% set schaccess =  ref_no_link(racessStorageLocationName, node.name).split('.')[1]%}
+{%-if config.enablerowacessMasking%}
+  {% set racessStorageLocationName = config.raccessStorageLocationName|trim %}
+  {% set dbaccess =  ref_no_link(racessStorageLocationName, node.name).split('.')[0] %}
+  {% set schaccess =  ref_no_link(racessStorageLocationName, node.name).split('.')[1]%}
+{%endif%}
 
 {# Override Masking sql #}
 
@@ -47,9 +50,9 @@ does not permit copying or modification for any other purpose.
      
      {% for item in config.racccolumn.get('items')%}
        {%- if loop.first -%}
-        {%set ns.raccol = item.racccolumnname.name %}
+        {%set ns.raccol = '"'+item.racccolumnname.name+'"' %}
        {%else%}
-        {%set ns.raccol = ns.raccol + ',' +item.racccolumnname.name %}
+        {%set ns.raccol = ns.raccol + '","' +item.racccolumnname.name + '"'%}
 
        {%endif%}
      {%endfor%}
@@ -84,7 +87,7 @@ does not permit copying or modification for any other purpose.
     {%- if node.description | length > 0 %} COMMENT = '{{ node.description | escape }}'
      {% endif %}
      {%-if config.enablerowacessMasking%}
-     WITH ROW ACCESS POLICY {{dbaccess}}.{{schaccess}}.{{config.rowaccessPolicy}} ON({{ns.raccol}})
+     WITH ROW ACCESS POLICY {{dbaccess}}.{{schaccess}}."{{config.rowaccessPolicy}}" ON({{ns.raccol}})
      {% endif %}
     AS
     {% for source in sources %}
