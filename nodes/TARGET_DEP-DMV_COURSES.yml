@@ -3,7 +3,7 @@ id: f1c9caf9-68f3-416e-9109-8753a0151e36
 name: DMV_COURSES
 operation:
   config:
-    enableMasking: true
+    enableMasking: false
     enablerowacessMasking: true
     groupByAll: false
     insertStrategy: UNION
@@ -14,11 +14,7 @@ operation:
         - smaskcolumn:
             columnCounter: 6d80f395-728c-422e-9c9a-0bd5ee7d05a6
             stepCounter: f1c9caf9-68f3-416e-9109-8753a0151e36
-          spolicyname: MASK_CHARSAMP
-        - smaskcolumn:
-            columnCounter: ada0e877-5c95-4e6b-903d-529851de659f
-            stepCounter: f1c9caf9-68f3-416e-9109-8753a0151e36
-          spolicyname: MASK_NUMSAMP1
+          spolicyname: MASK_CHAR
     racccolumn:
       items:
         - racccolumnname:
@@ -26,7 +22,7 @@ operation:
             stepCounter: f1c9caf9-68f3-416e-9109-8753a0151e36
     raccessStorageLocationName: TARGET
     rowaccessPolicy: RAP_IT
-    selMaskPolicy: mask_charsamp
+    selMaskPolicy: ""
     selectDistinct: false
   database: ""
   deployEnabled: true

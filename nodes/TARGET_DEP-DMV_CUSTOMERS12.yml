@@ -3,12 +3,15 @@ id: c93e77b9-bebc-405e-8e9b-6b6d97ae6c71
 name: DMV_CUSTOMERS12
 operation:
   config:
-    enableMasking: true
+    enableMasking: false
     enablerowacessMasking: false
     groupByAll: false
     insertStrategy: UNION
     maskStorageLocationName: TARGET
-    maskingOverride: false
+    maskingOverride: true
+    racccolumn:
+      items:
+        - racccolumnname: null
     selMaskPolicy: MASK_CHAR
     selectDistinct: false
   database: ""
