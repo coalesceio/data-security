@@ -11,7 +11,8 @@ operation:
     maskingOverride: false
     ovmaskcolumn:
       items:
-        - {}
+        - smaskcolumn: null
+          spolicyname: null
     racccolumn:
       items:
         - {}
@@ -48,7 +49,7 @@ operation:
         config: {}
         dataType: VARCHAR(25)
         description: ""
-        name: R_NAME
+        name: name
         nullable: true
         sourceColumnReferences:
           - columnReferences:

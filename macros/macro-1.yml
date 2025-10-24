@@ -17,7 +17,7 @@ macroString: |+
   {#--NOTES:Used to apply Dynamic Masking to columns based on pattern matching the follow list#}
   {% set col = namespace(match = 'no') %}
   {% for mask in maskList%}  
-      {% if mask in colname%} {% set col.match = 'yes'%} {%endif%}
+      {% if mask in colname|upper%} {% set col.match = 'yes'%} {%endif%}
   {% endfor%}
   {{-col.match | trim-}}
   {%- endmacro -%}
