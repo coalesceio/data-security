@@ -52,7 +52,7 @@ does not permit copying or modification for any other purpose.
        {%- if loop.first -%}
         {%set ns.raccol = '"'+item.racccolumnname.name+'"' %}
        {%else%}
-        {%set ns.raccol = ns.raccol + '","' +item.racccolumnname.name + '"'%}
+        {%set ns.raccol = ns.raccol + ',"' +item.racccolumnname.name + '"'%}
 
        {%endif%}
      {%endfor%}
