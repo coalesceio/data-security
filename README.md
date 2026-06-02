@@ -1,6 +1,8 @@
 # Data Security Package
 
-The Coalesce Data Security Package includes:
+The Coalesce Data Security Package helps you apply column-level data masking and row-level access policies to Snowflake views.
+
+The package includes:
 
 * [Dynamic Masking View](#dynamic-masking-view)
 * [Code](#code)
@@ -9,16 +11,16 @@ The Coalesce Data Security Package includes:
 
 ## Dynamic Masking View
 
-The Coalesce Dynamic Data Masking View node type allows you to create a view with masking policies applied to a column within a table or view.
+The Coalesce Dynamic Data Masking View Node type allows you to create a view with masking policies applied to a column within a table or view.
 
 [Dynamic Data Masking](https://docs.snowflake.com/en/user-guide/security-column-ddm-use) is a Column-level Security feature that uses masking policies to selectively mask data at query time.
 
 Depending on the masking policy conditions, the SQL execution context, and role hierarchy, Snowflake query operators may see the plain-text value, a partially masked value, or a fully masked value.
-This node type offers to apply [column-level data masking](https://docs.snowflake.com/user-guide/security-column-intro) and [row-level access policy](https://docs.snowflake.com/en/user-guide/security-row-intro) to the target view.
+This Node type applies [column-level data masking](https://docs.snowflake.com/user-guide/security-column-intro) and [row-level access policy](https://docs.snowflake.com/en/user-guide/security-row-intro) to the target view.
 
 ### Prerequisites for Dynamic Masking View
 
-* Create a snowflake masking policy for column-level security and row level access policy for row-level security.This is used in the node type to create a masked view.
+* Create a Snowflake masking policy for column-level security and a row-level access policy for row-level security. This is used in the Node type to create a masked view.
 
 Snowflake supports masking policies as a schema-level object to protect sensitive data from unauthorized access while allowing authorized users to access sensitive data at query runtime.
 
@@ -38,7 +40,7 @@ Snowflake supports masking policies as a schema-level object to protect sensitiv
 
 ### Dynamic Masking View Node Configuration
 
-The Work node type has four configuration groups:
+The Dynamic Masking View Node type has 4 configuration groups:
 
 * [Node Properties](#node-properties)
 * [Options](#options)
@@ -49,7 +51,7 @@ The Work node type has four configuration groups:
 |----------|-------------|
 | **Storage Location** | Storage Location where the target view will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/> If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Deploy Enabled** | If TRUE the Node will be deployed or redeployed when changes are detected<br/> If FALSE the Node will not be deployed or will be dropped during redeployment |
 
 #### Options
 
@@ -59,21 +61,21 @@ The Work node type has four configuration groups:
 | **Group by All** | Toggle: True/False<br/>**True**: DISTINCT is invisible. Data is grouped by all columns for processing<br/>**False**: DISTINCT is visible |
 | **Multi Source** | Toggle: True/False<br/>Implementation of SQL UNIONs<br/>**True**: Combine multiple sources in a single node<br/>True Options:<br/>- **UNION**: Combines with duplicate elimination<br/>- **UNION ALL**: Combines without duplicate elimination<br/>**False**: Single source node or multiple sources combined using a join |
 | **Enable Column Masking** | Toggle: True/False<br/> Provides option to enable column masking |
-| **Coalesce Storage Location of Data Masking Policy**| Enabled when Column Masking is true.Storage location in Coalesce where the Masking policy resides |
-| **Snowflake Masking Policy**| Name of snowflake masking policy to mask columns of available column patterns |
+| **Coalesce Storage Location of Data Masking Policy**| Enabled when Column Masking is true. Storage location in Coalesce where the Masking policy resides |
+| **Snowflake Masking Policy**| Name of Snowflake masking policy to mask columns of available column patterns |
 | **Override Masking columns**| Toggle: True/False<br/> Provides option to enable masking for specific column specified config |
-| **Snowflake masking Column Name**| Enabled when Override Masking columns option is true.The column on which data masking to be applied |
-| **Snowflake masking policy Name**| Name of the snowflake masking policy.Different masking policy for different columns is possible |
+| **Snowflake masking Column Name**| Enabled when Override Masking columns option is true. The column on which data masking is applied |
+| **Snowflake masking policy Name**| Name of the Snowflake masking policy. Different masking policies for different columns are supported |
 | **Enable row level security** | Toggle: True/False<br/> Provides option to enable row level access restriction |
-| **Coalesce Storage Location of row access policy**| Enabled when row level security is true.Storage location in Coalesce where the Row access policy resides |
-| **Row access policy name**| Name of snowflake row access policy |
-| **Row access column name**| The column name(s) on whose availability in the table ,row level access is enabled|
+| **Coalesce Storage Location of row access policy**| Enabled when row level security is true. Storage location in Coalesce where the Row access policy resides |
+| **Row access policy name**| Name of Snowflake row access policy |
+| **Row access column name**| The column name or names that control row-level access in the table |
 
 ### Enable Column Masking
 
 ![image](https://github.com/user-attachments/assets/5b4d6d43-acee-40b3-87bb-e90af053f7dd)
 
-### Enable row level security 
+### Enable Row Level Security
 
 ![image](https://github.com/user-attachments/assets/d4886da5-9f92-4c76-b11f-831d257104d7)
 
@@ -81,7 +83,7 @@ The Work node type has four configuration groups:
 
 #### Dynamic Masking View Initial Deployment
 
-When deployed for the first time into an environment the View node will execute the Create View stage.
+When deployed for the first time into an environment, the View Node executes the Create View stage.
 
 | **Stage** | **Description** |
 |-----------|----------------|
@@ -89,7 +91,7 @@ When deployed for the first time into an environment the View node will execute 
 
 #### Dynamic Masking View Redeployment
 
-The subsequent deployment of View node with changes in view definition, adding table description, adding secure option or renaming view results in deleting the existing view and recreating the view.
+Subsequent deployment of the View Node with changes to the view definition, table description, secure option, or view name deletes the existing view and recreates it.
 
 The following stages are executed:
 
@@ -100,9 +102,9 @@ The following stages are executed:
 
 #### Dynamic Masking View Undeployment
 
-If a View Node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher level environment then the View in the target environment will be dropped.
+If a View Node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level Environment, then the View in the target Environment is dropped.
 
-This is executed in the below stage:
+This executes the following stage:
 
 | **Stage** | **Description** |
 |-----------|----------------|
