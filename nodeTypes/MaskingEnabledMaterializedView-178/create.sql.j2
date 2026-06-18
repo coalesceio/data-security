@@ -225,13 +225,6 @@ does not permit copying or modification for any other purpose.
 
             {% endif %}
         {% endif %}
-        {% if createTest == true and  currentState.node.materializationType != desiredState.node.materializationType %}
-            {# Change in materialization type #}
-            {{ stage('Drop ' + ref_no_link(currentState.node.location.name, currentState.node.name)) }}
-            {%- set materialization = dropMaterialization(currentState.node.materializationType) %}
-            DROP {{ materialization }} {{ ref_no_link(currentState.node.location.name, currentState.node.name) }}
-
-        {% endif %}
 
         {{ stage('Create Masking Enabled Materialized View', true, "sql", "create") }}
             CREATE OR REPLACE {% if desiredState.config.secureOption %} SECURE {% endif %}
