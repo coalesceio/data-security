@@ -13,7 +13,7 @@ operation:
     clusterKeyExpressions: false
     enableMasking: true
     enablerowacessMasking: false
-    maskStorageLocationName: SOURCE
+    maskStorageLocationName: TARGET
     maskingOverride: false
     ovmaskcolumn:
       items:
@@ -24,7 +24,7 @@ operation:
     raccessStorageLocationName: ""
     rowaccessPolicy: ""
     secureOption: false
-    selMaskPolicy: SSN_MASK_V2
+    selMaskPolicy: ssn_mask_v2
     selectDistinct: false
   database: ""
   deployEnabled: true

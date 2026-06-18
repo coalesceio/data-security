@@ -14,7 +14,7 @@ operation:
     enableMasking: true
     enablerowacessMasking: false
     maskStorageLocationName: SOURCE
-    maskingOverride: true
+    maskingOverride: false
     ovmaskcolumn:
       items:
         - smaskcolumn:
@@ -27,7 +27,7 @@ operation:
     raccessStorageLocationName: ""
     rowaccessPolicy: ""
     secureOption: false
-    selMaskPolicy: ""
+    selMaskPolicy: SSN_MASK2
     selectDistinct: false
   database: ""
   deployEnabled: true

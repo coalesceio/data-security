@@ -14,10 +14,13 @@ operation:
     enableMasking: true
     enablerowacessMasking: false
     maskStorageLocationName: SOURCE
-    maskingOverride: false
+    maskingOverride: true
     ovmaskcolumn:
       items:
-        - {}
+        - smaskcolumn:
+            columnCounter: 9471cbf0-2bda-4a06-8a5f-85773f95b641
+            stepCounter: b117a777-be47-41c7-aa5c-b3268dd52ac5
+          spolicyname: SSN_MASK2
     racccolumn:
       items:
         - {}
