@@ -1,6 +1,6 @@
 fileVersion: 1
-id: b32a37a1-4999-4921-8994-0bb64d9b4234
-name: PRODUCTS_GROCERY
+id: c022f59e-aca5-4e74-bfaf-152b7cf2efcb
+name: EMP_SOURCE
 operation:
   database: ""
   deployEnabled: true
@@ -13,32 +13,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: e036d257-fca2-443b-b8eb-2a68594bca55
-          stepCounter: b32a37a1-4999-4921-8994-0bb64d9b4234
+          columnCounter: c069b899-1b66-41af-98d1-519b510693c9
+          stepCounter: c022f59e-aca5-4e74-bfaf-152b7cf2efcb
         config: {}
         dataType: NUMBER(38,0)
         defaultValue: ""
         description: ""
-        name: PRODUCT_ID
-        nullable: false
-        primaryKey: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 0f826e1e-e9ef-4f40-8386-09fd37b4f301
-          stepCounter: b32a37a1-4999-4921-8994-0bb64d9b4234
-        config: {}
-        dataType: VARCHAR(255)
-        defaultValue: ""
-        description: ""
-        name: PRODUCT_NAME
+        name: EMP_ID
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -51,13 +32,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 667023ac-346d-4c1f-891e-092a1e1fc443
-          stepCounter: b32a37a1-4999-4921-8994-0bb64d9b4234
+          columnCounter: 368121e1-6de2-4727-8b67-f61287c3a63f
+          stepCounter: c022f59e-aca5-4e74-bfaf-152b7cf2efcb
         config: {}
-        dataType: VARCHAR(100)
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: BRAND
+        name: EMP_NAME
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -70,13 +51,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 0e940efe-b820-45d7-b86c-8e5309d3df1e
-          stepCounter: b32a37a1-4999-4921-8994-0bb64d9b4234
+          columnCounter: 499c90ab-02bc-4391-914e-15dbf37b3706
+          stepCounter: c022f59e-aca5-4e74-bfaf-152b7cf2efcb
         config: {}
-        dataType: VARCHAR(50)
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: COLOUR
+        name: EMP_CITY
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -84,7 +65,45 @@ operation:
             transform: ""
         transform: ""
         uniqueKey: false
-  name: PRODUCTS_GROCERY
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d7dad175-a60d-4a64-a1bd-98eb8fef3857
+          stepCounter: c022f59e-aca5-4e74-bfaf-152b7cf2efcb
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: DML_FLAG
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: aaaa333b-76cb-47c1-b137-70f02a4ca197
+          stepCounter: c022f59e-aca5-4e74-bfaf-152b7cf2efcb
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: CREATED_AT
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+  name: EMP_SOURCE
   schema: ""
   sqlType: Source
   type: sourceInput

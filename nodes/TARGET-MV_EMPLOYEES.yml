@@ -1,0 +1,136 @@
+fileVersion: 1
+id: a8387a29-373a-48d4-9a0c-37ce2dbb1a6c
+name: MV_EMPLOYEES
+operation:
+  config:
+    clusterKey: false
+    clusterKeyConfig:
+      items:
+        - {}
+    clusterKeyConfigExpressions:
+      items:
+        - {}
+    clusterKeyExpressions: false
+    enableMasking: false
+    enablerowacessMasking: false
+    maskStorageLocationName: SOURCE
+    maskingOverride: true
+    ovmaskcolumn:
+      items:
+        - smaskcolumn:
+            columnCounter: 141aa501-99c9-4c68-9214-72980ac4f533
+            stepCounter: a8387a29-373a-48d4-9a0c-37ce2dbb1a6c
+          spolicyname: SSN_MASK2
+    racccolumn:
+      items:
+        - racccolumnname:
+            columnCounter: fdfa0d44-bfd4-4204-8c8b-ecce6121269c
+            stepCounter: a8387a29-373a-48d4-9a0c-37ce2dbb1a6c
+        - racccolumnname:
+            columnCounter: d92c3854-cf34-4d43-9522-ba5b0261128c
+            stepCounter: a8387a29-373a-48d4-9a0c-37ce2dbb1a6c
+    raccessStorageLocationName: SOURCE
+    rowaccessPolicy: REGION_POLICY3
+    secureOption: true
+    selMaskPolicy: SSN_MASK2
+    selectDistinct: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: Materialized View
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 10938c15-38af-4928-ac13-9c56608b2bd2
+          stepCounter: a8387a29-373a-48d4-9a0c-37ce2dbb1a6c
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: EMP_ID_01
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3a58beca-a994-4ab5-b5d2-19f72b305e92
+                stepCounter: 0f4e41a4-b029-4c3e-af54-5b58b8566c3f
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 141aa501-99c9-4c68-9214-72980ac4f533
+          stepCounter: a8387a29-373a-48d4-9a0c-37ce2dbb1a6c
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: EMP_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2bf4b722-bdf5-4bbb-8692-1047e72ca249
+                stepCounter: 0f4e41a4-b029-4c3e-af54-5b58b8566c3f
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 55838416-6a53-4dec-a6b0-c52873080791
+          stepCounter: a8387a29-373a-48d4-9a0c-37ce2dbb1a6c
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: SSN
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 58d30881-ce4a-4863-b434-f5823f09411a
+                stepCounter: 0f4e41a4-b029-4c3e-af54-5b58b8566c3f
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d92c3854-cf34-4d43-9522-ba5b0261128c
+          stepCounter: a8387a29-373a-48d4-9a0c-37ce2dbb1a6c
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SALARY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: da2358f4-2208-4169-8b7e-7ba182d7a8d9
+                stepCounter: 0f4e41a4-b029-4c3e-af54-5b58b8566c3f
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fdfa0d44-bfd4-4204-8c8b-ecce6121269c
+          stepCounter: a8387a29-373a-48d4-9a0c-37ce2dbb1a6c
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: REGION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6013b495-b193-4566-9660-7475bc476fec
+                stepCounter: 0f4e41a4-b029-4c3e-af54-5b58b8566c3f
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          EMPLOYEES: 0f4e41a4-b029-4c3e-af54-5b58b8566c3f
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SOURCE
+            nodeName: EMPLOYEES
+        join:
+          joinCondition: FROM {{ ref('SOURCE', 'EMPLOYEES') }} "EMPLOYEES"
+        name: MV_EMPLOYEES
+        noLinkRefs: []
+  name: MV_EMPLOYEES
+  overrideSQL: false
+  schema: ""
+  sqlType: "178"
+  type: sql
+  version: 1
+type: Node

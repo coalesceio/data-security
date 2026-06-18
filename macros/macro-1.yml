@@ -1,6 +1,16 @@
 fileVersion: 1
 id: "1"
 macroString: |+
+  {% if desiredState %}
+      {% set columns = desiredState.columns %}
+      {% set storageLocations = desiredState.storageLocations %}
+      {% set config = desiredState.config %}
+      {% set sources = desiredState.sources %}
+      {% set node = desiredState.node %}
+      {% set parameters = desiredState.parameters %}
+  {% endif %}
+
+
   {#------------------------------------------------------------------------------------------------------#}
   {#-- The following variable can be customized to include or remove column name patterns that  needs to be masked --#}
   {#-- It is used in the macro found below.                                                     --#}
@@ -8,7 +18,7 @@ macroString: |+
   {% set maskList =
         ['PHONE',
         'ADDRESS',
-        'NAME',
+        'NAME'
         'ACCOUNT','EMAIL','INCOME']
   %}
 

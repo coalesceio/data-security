@@ -1,0 +1,121 @@
+fileVersion: 1
+id: 5aafbf5f-5899-4940-9f65-b100abeb28c0
+name: MV_EMP_SOURCE
+operation:
+  config:
+    clusterKey: false
+    clusterKeyConfig:
+      items:
+        - columnName:
+            columnCounter: 3cf14f2b-3ed2-43de-9489-b1db5ce7e596
+            stepCounter: 5aafbf5f-5899-4940-9f65-b100abeb28c0
+    clusterKeyConfigExpressions:
+      items:
+        - {}
+    clusterKeyExpressions: false
+    enableMasking: true
+    maskStorageLocationName: SOURCE
+    maskingOverride: false
+    secureOption: true
+    selMaskPolicy: salary_mask
+    selectDistinct: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: Materialized View
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 30743c04-f40d-462e-858e-1ff7e4c8e364
+          stepCounter: 5aafbf5f-5899-4940-9f65-b100abeb28c0
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: EMP_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c069b899-1b66-41af-98d1-519b510693c9
+                stepCounter: c022f59e-aca5-4e74-bfaf-152b7cf2efcb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3cf14f2b-3ed2-43de-9489-b1db5ce7e596
+          stepCounter: 5aafbf5f-5899-4940-9f65-b100abeb28c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: EMP_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 368121e1-6de2-4727-8b67-f61287c3a63f
+                stepCounter: c022f59e-aca5-4e74-bfaf-152b7cf2efcb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 24357d63-df5c-4402-8784-f2472837d452
+          stepCounter: 5aafbf5f-5899-4940-9f65-b100abeb28c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: EMP_CITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 499c90ab-02bc-4391-914e-15dbf37b3706
+                stepCounter: c022f59e-aca5-4e74-bfaf-152b7cf2efcb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b2f2ead3-2365-4f79-a314-60fe5c196d42
+          stepCounter: 5aafbf5f-5899-4940-9f65-b100abeb28c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: DML_FLAG
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d7dad175-a60d-4a64-a1bd-98eb8fef3857
+                stepCounter: c022f59e-aca5-4e74-bfaf-152b7cf2efcb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c6e7cf64-65df-4df0-91f9-b7b3608e694f
+          stepCounter: 5aafbf5f-5899-4940-9f65-b100abeb28c0
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: CREATED_AT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: aaaa333b-76cb-47c1-b137-70f02a4ca197
+                stepCounter: c022f59e-aca5-4e74-bfaf-152b7cf2efcb
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          EMP_SOURCE: c022f59e-aca5-4e74-bfaf-152b7cf2efcb
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SOURCE
+            nodeName: EMP_SOURCE
+        join:
+          joinCondition: FROM {{ ref('SOURCE', 'EMP_SOURCE') }} "EMP_SOURCE"
+        name: MV_EMP_SOURCE
+        noLinkRefs: []
+  name: MV_EMP_SOURCE
+  overrideSQL: false
+  schema: ""
+  sqlType: "178"
+  type: sql
+  version: 1
+type: Node

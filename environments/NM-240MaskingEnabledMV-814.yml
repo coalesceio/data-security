@@ -1,0 +1,14 @@
+fileVersion: 1
+id: "814"
+mappingDefinitions:
+  SOURCE:
+    database: PRANJAL_DEV
+    schema: SOURCE_DB
+  TARGET:
+    database: PRANJAL_DEV
+    schema: TEST_DB
+  TARGET_DEP:
+    database: PRANJAL_DEV
+    schema: TARGET_DB
+name: "[NM-240]Masking Enabled MV"
+type: Environment
