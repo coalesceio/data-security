@@ -1,6 +1,6 @@
 fileVersion: 1
-id: a8387a29-373a-48d4-9a0c-37ce2dbb1a6c
-name: MV_EMPLOYEES
+id: b8fb4182-9363-4999-8b28-66fdb3984152
+name: DMV_EMPLOYEES_LOC_CHANGE
 operation:
   config:
     clusterKey: false
@@ -11,46 +11,38 @@ operation:
       items:
         - {}
     clusterKeyExpressions: false
-    enableMasking: false
+    enableMasking: true
     enablerowacessMasking: false
     maskStorageLocationName: SOURCE
-    maskingOverride: true
+    maskingOverride: false
     ovmaskcolumn:
       items:
-        - smaskcolumn:
-            columnCounter: 141aa501-99c9-4c68-9214-72980ac4f533
-            stepCounter: a8387a29-373a-48d4-9a0c-37ce2dbb1a6c
-          spolicyname: SSN_MASK2
+        - {}
     racccolumn:
       items:
-        - racccolumnname:
-            columnCounter: fdfa0d44-bfd4-4204-8c8b-ecce6121269c
-            stepCounter: a8387a29-373a-48d4-9a0c-37ce2dbb1a6c
-        - racccolumnname:
-            columnCounter: d92c3854-cf34-4d43-9522-ba5b0261128c
-            stepCounter: a8387a29-373a-48d4-9a0c-37ce2dbb1a6c
-    raccessStorageLocationName: SOURCE
-    rowaccessPolicy: REGION_POLICY3
-    secureOption: true
-    selMaskPolicy: SSN_MASK2
-    selectDistinct: true
+        - {}
+    raccessStorageLocationName: ""
+    rowaccessPolicy: ""
+    secureOption: false
+    selMaskPolicy: SSN_MASK_V2
+    selectDistinct: false
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: false
   locationName: TARGET
-  materializationType: Materialized View
+  materializationType: materialized view
   metadata:
     appliedNodeTests: []
     columns:
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 10938c15-38af-4928-ac13-9c56608b2bd2
-          stepCounter: a8387a29-373a-48d4-9a0c-37ce2dbb1a6c
+          columnCounter: 9f49494e-433e-4250-ba80-6162e8319291
+          stepCounter: b8fb4182-9363-4999-8b28-66fdb3984152
         config: {}
         dataType: NUMBER(38,0)
         description: ""
-        name: EMP_ID_01
+        name: EMP_ID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -59,8 +51,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 141aa501-99c9-4c68-9214-72980ac4f533
-          stepCounter: a8387a29-373a-48d4-9a0c-37ce2dbb1a6c
+          columnCounter: e554faf8-59b0-407a-b6fc-b52eb987ca61
+          stepCounter: b8fb4182-9363-4999-8b28-66fdb3984152
         config: {}
         dataType: VARCHAR(16777216)
         description: ""
@@ -73,8 +65,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 55838416-6a53-4dec-a6b0-c52873080791
-          stepCounter: a8387a29-373a-48d4-9a0c-37ce2dbb1a6c
+          columnCounter: 5ee95cce-f82e-4fb9-b7f3-2f7efa421412
+          stepCounter: b8fb4182-9363-4999-8b28-66fdb3984152
         config: {}
         dataType: VARCHAR(16777216)
         description: ""
@@ -87,8 +79,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: d92c3854-cf34-4d43-9522-ba5b0261128c
-          stepCounter: a8387a29-373a-48d4-9a0c-37ce2dbb1a6c
+          columnCounter: bb5a8a1f-328a-4aa5-aed6-8bdab97a35fc
+          stepCounter: b8fb4182-9363-4999-8b28-66fdb3984152
         config: {}
         dataType: NUMBER(38,0)
         description: ""
@@ -101,8 +93,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: fdfa0d44-bfd4-4204-8c8b-ecce6121269c
-          stepCounter: a8387a29-373a-48d4-9a0c-37ce2dbb1a6c
+          columnCounter: 58d6bee6-3c7d-4c17-af4e-6ef894ad540d
+          stepCounter: b8fb4182-9363-4999-8b28-66fdb3984152
         config: {}
         dataType: VARCHAR(16777216)
         description: ""
@@ -125,9 +117,9 @@ operation:
             nodeName: EMPLOYEES
         join:
           joinCondition: FROM {{ ref('SOURCE', 'EMPLOYEES') }} "EMPLOYEES"
-        name: MV_EMPLOYEES
+        name: DMV_EMPLOYEES_LOC_CHANGE
         noLinkRefs: []
-  name: MV_EMPLOYEES
+  name: DMV_EMPLOYEES_LOC_CHANGE
   overrideSQL: false
   schema: ""
   sqlType: "178"

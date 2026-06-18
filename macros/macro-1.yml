@@ -18,6 +18,7 @@ macroString: |+
   {% set maskList =
         ['PHONE',
         'ADDRESS',
+        'SSN',
         'NAME'
         'ACCOUNT','EMAIL','INCOME']
   %}

@@ -1,6 +1,6 @@
 fileVersion: 1
-id: 51c0b72b-48a1-4dfa-9391-89c6ef4aa170
-name: DMV_EMPLOYEES1
+id: 288cfd91-fa5c-4ea4-bf5c-26d2ac60e35e
+name: DMV_EMPLOYEES_TEST
 operation:
   config:
     clusterKey: false
@@ -17,8 +17,7 @@ operation:
     maskingOverride: false
     ovmaskcolumn:
       items:
-        - smaskcolumn: null
-          spolicyname: ""
+        - {}
     racccolumn:
       items:
         - {}
@@ -32,14 +31,14 @@ operation:
   description: ""
   isMultisource: false
   locationName: TARGET
-  materializationType: Materialized View
+  materializationType: materialized view
   metadata:
     appliedNodeTests: []
     columns:
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 19ade113-80c6-40fc-9646-eb7f8e674d0e
-          stepCounter: 51c0b72b-48a1-4dfa-9391-89c6ef4aa170
+          columnCounter: c1b2abae-314f-4f99-b4b2-2483b9e855eb
+          stepCounter: 288cfd91-fa5c-4ea4-bf5c-26d2ac60e35e
         config: {}
         dataType: NUMBER(38,0)
         description: ""
@@ -52,8 +51,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 019e696b-71ec-42c1-a4cc-7f8f6d439b68
-          stepCounter: 51c0b72b-48a1-4dfa-9391-89c6ef4aa170
+          columnCounter: e3653250-52e0-478d-8b0a-e3601abd1b8c
+          stepCounter: 288cfd91-fa5c-4ea4-bf5c-26d2ac60e35e
         config: {}
         dataType: VARCHAR(16777216)
         description: ""
@@ -66,8 +65,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 4b10652a-7374-4bd3-b51c-429b798bde13
-          stepCounter: 51c0b72b-48a1-4dfa-9391-89c6ef4aa170
+          columnCounter: 1919ed54-778f-4d8b-a9dc-958f26ebd204
+          stepCounter: 288cfd91-fa5c-4ea4-bf5c-26d2ac60e35e
         config: {}
         dataType: VARCHAR(16777216)
         description: ""
@@ -80,8 +79,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: e8ca29dd-ba9e-4467-9dd6-61e744e9a69f
-          stepCounter: 51c0b72b-48a1-4dfa-9391-89c6ef4aa170
+          columnCounter: 4ce3542c-0729-4ac0-83e0-3c50ce2539eb
+          stepCounter: 288cfd91-fa5c-4ea4-bf5c-26d2ac60e35e
         config: {}
         dataType: NUMBER(38,0)
         description: ""
@@ -94,8 +93,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: d0340fb5-6ba5-4a95-a18c-41bc873970dd
-          stepCounter: 51c0b72b-48a1-4dfa-9391-89c6ef4aa170
+          columnCounter: 19ce1d98-a42e-44e5-8496-3ebc42f9355a
+          stepCounter: 288cfd91-fa5c-4ea4-bf5c-26d2ac60e35e
         config: {}
         dataType: VARCHAR(16777216)
         description: ""
@@ -118,9 +117,9 @@ operation:
             nodeName: EMPLOYEES
         join:
           joinCondition: FROM {{ ref('SOURCE', 'EMPLOYEES') }} "EMPLOYEES"
-        name: DMV_EMPLOYEES1
+        name: DMV_EMPLOYEES_TEST
         noLinkRefs: []
-  name: DMV_EMPLOYEES1
+  name: DMV_EMPLOYEES_TEST
   overrideSQL: false
   schema: ""
   sqlType: "178"

@@ -1,38 +1,47 @@
 fileVersion: 1
-id: 0f76018c-0885-4d16-91b1-9ba5f7b0817e
-name: DMV_EMPLOYEES
+id: 588bc7c0-86ca-412d-a9a7-ce8fd9a2e273
+name: DMV_EMPLOYEES_OVERRIDE2
 operation:
   config:
+    clusterKey: false
+    clusterKeyConfig:
+      items:
+        - {}
+    clusterKeyConfigExpressions:
+      items:
+        - {}
+    clusterKeyExpressions: false
     enableMasking: true
     enablerowacessMasking: false
-    groupByAll: false
-    insertStrategy: UNION
     maskStorageLocationName: SOURCE
-    maskingOverride: false
+    maskingOverride: true
     ovmaskcolumn:
       items:
-        - smaskcolumn: null
-          spolicyname: ""
+        - smaskcolumn:
+            columnCounter: 9c4938a0-0afa-4c23-9d07-fd60fa38f12d
+            stepCounter: 588bc7c0-86ca-412d-a9a7-ce8fd9a2e273
+          spolicyname: SSN_MASK_V2
     racccolumn:
       items:
         - {}
     raccessStorageLocationName: ""
     rowaccessPolicy: ""
-    selMaskPolicy: SSN_MASK_V2
+    secureOption: false
+    selMaskPolicy: ""
     selectDistinct: false
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: false
   locationName: TARGET
-  materializationType: view
+  materializationType: materialized view
   metadata:
     appliedNodeTests: []
     columns:
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 161e4b44-8861-4bdd-993c-f9c494099121
-          stepCounter: 0f76018c-0885-4d16-91b1-9ba5f7b0817e
+          columnCounter: 8ec8986a-9ba8-4c9a-b2d1-032c07a27a21
+          stepCounter: 588bc7c0-86ca-412d-a9a7-ce8fd9a2e273
         config: {}
         dataType: NUMBER(38,0)
         description: ""
@@ -45,8 +54,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: c8c565e7-ad89-44da-b7ba-bf5e69bf2209
-          stepCounter: 0f76018c-0885-4d16-91b1-9ba5f7b0817e
+          columnCounter: 9db3be55-cde6-493a-ae03-7fb098d0715f
+          stepCounter: 588bc7c0-86ca-412d-a9a7-ce8fd9a2e273
         config: {}
         dataType: VARCHAR(16777216)
         description: ""
@@ -59,8 +68,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: c9e896e6-d01c-4a89-9f02-9217cabc4194
-          stepCounter: 0f76018c-0885-4d16-91b1-9ba5f7b0817e
+          columnCounter: 9c4938a0-0afa-4c23-9d07-fd60fa38f12d
+          stepCounter: 588bc7c0-86ca-412d-a9a7-ce8fd9a2e273
         config: {}
         dataType: VARCHAR(16777216)
         description: ""
@@ -73,8 +82,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 00e31765-895c-4fa7-859d-2a1e152c2f29
-          stepCounter: 0f76018c-0885-4d16-91b1-9ba5f7b0817e
+          columnCounter: 8fc3a071-538a-4e0c-8604-4dcaa1dbfb1c
+          stepCounter: 588bc7c0-86ca-412d-a9a7-ce8fd9a2e273
         config: {}
         dataType: NUMBER(38,0)
         description: ""
@@ -87,8 +96,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 5ee3a3d8-02f7-4e54-8d3b-84a23c35988a
-          stepCounter: 0f76018c-0885-4d16-91b1-9ba5f7b0817e
+          columnCounter: 6b2fe3ea-c18c-41f7-be22-615e72206aa2
+          stepCounter: 588bc7c0-86ca-412d-a9a7-ce8fd9a2e273
         config: {}
         dataType: VARCHAR(16777216)
         description: ""
@@ -111,12 +120,12 @@ operation:
             nodeName: EMPLOYEES
         join:
           joinCondition: FROM {{ ref('SOURCE', 'EMPLOYEES') }} "EMPLOYEES"
-        name: DMV_EMPLOYEES
+        name: DMV_EMPLOYEES_OVERRIDE2
         noLinkRefs: []
-  name: DMV_EMPLOYEES
+  name: DMV_EMPLOYEES_OVERRIDE2
   overrideSQL: false
   schema: ""
-  sqlType: "455"
+  sqlType: "178"
   type: sql
   version: 1
 type: Node
