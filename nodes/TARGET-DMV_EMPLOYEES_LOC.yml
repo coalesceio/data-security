@@ -13,7 +13,7 @@ operation:
     clusterKeyExpressions: false
     enableMasking: true
     enablerowacessMasking: false
-    maskStorageLocationName: SOURCE
+    maskStorageLocationName: TARGET
     maskingOverride: false
     ovmaskcolumn:
       items:
