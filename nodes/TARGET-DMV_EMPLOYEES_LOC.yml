@@ -1,0 +1,128 @@
+fileVersion: 1
+id: 23a0bd64-a909-4c92-923c-fad8f8d75317
+name: DMV_EMPLOYEES_LOC
+operation:
+  config:
+    clusterKey: false
+    clusterKeyConfig:
+      items:
+        - {}
+    clusterKeyConfigExpressions:
+      items:
+        - {}
+    clusterKeyExpressions: false
+    enableMasking: true
+    enablerowacessMasking: false
+    maskStorageLocationName: SOURCE
+    maskingOverride: false
+    ovmaskcolumn:
+      items:
+        - {}
+    racccolumn:
+      items:
+        - {}
+    raccessStorageLocationName: ""
+    rowaccessPolicy: ""
+    secureOption: false
+    selMaskPolicy: ssn_mask_test
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: materialized view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8149a480-da2e-4dad-913a-25e0a02c6c7e
+          stepCounter: 23a0bd64-a909-4c92-923c-fad8f8d75317
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: EMP_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3a58beca-a994-4ab5-b5d2-19f72b305e92
+                stepCounter: 0f4e41a4-b029-4c3e-af54-5b58b8566c3f
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7b905362-ae77-4c18-9dfa-79cc516c05cf
+          stepCounter: 23a0bd64-a909-4c92-923c-fad8f8d75317
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: EMP_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2bf4b722-bdf5-4bbb-8692-1047e72ca249
+                stepCounter: 0f4e41a4-b029-4c3e-af54-5b58b8566c3f
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f89d66c0-1d31-4528-8d73-d5fdd9c842c7
+          stepCounter: 23a0bd64-a909-4c92-923c-fad8f8d75317
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: SSN
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 58d30881-ce4a-4863-b434-f5823f09411a
+                stepCounter: 0f4e41a4-b029-4c3e-af54-5b58b8566c3f
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 175be08b-c954-461f-ac74-4e9c89a4350a
+          stepCounter: 23a0bd64-a909-4c92-923c-fad8f8d75317
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SALARY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: da2358f4-2208-4169-8b7e-7ba182d7a8d9
+                stepCounter: 0f4e41a4-b029-4c3e-af54-5b58b8566c3f
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ea4e8357-8bf2-4ec5-8130-0fb3c57e4a9e
+          stepCounter: 23a0bd64-a909-4c92-923c-fad8f8d75317
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: REGION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6013b495-b193-4566-9660-7475bc476fec
+                stepCounter: 0f4e41a4-b029-4c3e-af54-5b58b8566c3f
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          EMPLOYEES: 0f4e41a4-b029-4c3e-af54-5b58b8566c3f
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SOURCE
+            nodeName: EMPLOYEES
+        join:
+          joinCondition: FROM {{ ref('SOURCE', 'EMPLOYEES') }} "EMPLOYEES"
+        name: DMV_EMPLOYEES_LOC
+        noLinkRefs: []
+  name: DMV_EMPLOYEES_LOC
+  overrideSQL: false
+  schema: ""
+  sqlType: "178"
+  type: sql
+  version: 1
+type: Node
