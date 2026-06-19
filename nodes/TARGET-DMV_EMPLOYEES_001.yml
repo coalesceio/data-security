@@ -20,17 +20,14 @@ operation:
         - smaskcolumn:
             columnCounter: d56d6bdc-bccd-48ca-9840-7c7a4410f507
             stepCounter: f53e34e5-4fb9-4a7a-b2ef-4c8a3e09048f
-          spolicyname: SSN_MASK_V2
+          spolicyname: SSN_MASK2
     racccolumn:
       items:
         - racccolumnname:
             columnCounter: 90fe0b1c-2601-4b59-a49e-31d0308bb667
             stepCounter: f53e34e5-4fb9-4a7a-b2ef-4c8a3e09048f
-        - racccolumnname:
-            columnCounter: ce4db0f7-5d25-4f68-89c1-da07555c7617
-            stepCounter: f53e34e5-4fb9-4a7a-b2ef-4c8a3e09048f
     raccessStorageLocationName: SOURCE
-    rowaccessPolicy: employee_region_salary_policy
+    rowaccessPolicy: REGION_POLICY3
     secureOption: false
     selMaskPolicy: ""
     selectDistinct: false

@@ -62,7 +62,7 @@ operation:
           - columnReferences:
               - columnCounter: 2bf4b722-bdf5-4bbb-8692-1047e72ca249
                 stepCounter: 0f4e41a4-b029-4c3e-af54-5b58b8566c3f
-            transform: UPPER("EMPLOYEES"."EMP_NAME")
+            transform: LOWER("EMPLOYEES"."EMP_NAME")
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 6a0a69fb-b86e-4275-bd00-bbe979ba268a
