@@ -1,0 +1,164 @@
+fileVersion: 1
+id: "178"
+isDisabled: false
+metadata:
+  defaultStorageLocation: null
+  error: null
+  nodeMetadataSpec: |+
+    capitalized: Masking Enabled Materialized View.
+    short: DMV
+    tagColor: "#BB8FCE"
+    isDisabled: true
+    plural: Materialized Views
+
+    deployStrategy: advanced
+
+    config:
+      - groupName: Options
+        items: 
+
+        - displayName: Type
+          type: materializationSelector
+          default: materialized view
+          options:
+          - materialized view
+          isRequired: false
+
+        - type: toggleButton
+          attributeName: selectDistinct
+          displayName: Distinct
+          default: false
+
+        - type: toggleButton
+          attributeName: clusterKey
+          displayName: Cluster Key
+          default: false
+          isRequired: false
+
+        - type: toggleButton
+          attributeName: clusterKeyExpressions
+          displayName: Allow Expressions in Cluster Key
+          default: false
+          isRequired: false
+          enableIf: "{% if config.clusterKey %} true {% else %} false {% endif %}"
+
+    # Cluster Key-determine if a node is to be clustered or not #
+
+        - type: tabular
+          displayName: 'Cluster Key'
+          attributeName: clusterKeyConfig
+          columns:
+      
+          -  type: columnDropdownSelector
+             displayName: Column Name
+             attributeName: columnName
+             isRequired: false
+        
+          isRequired: false
+          enableIf: "{% if (config.clusterKey and not config.clusterKeyExpressions) %} true {% else %} false {% endif %}"
+
+        - type: tabular
+          displayName: 'Cluster Key'
+          attributeName: clusterKeyConfigExpressions
+          columns:
+      
+          -  type: columnDropdownSelector
+             displayName: Column Name
+             attributeName: columnNameExpressions
+             isRequired: false
+        
+          -  type: textBox
+             displayName: Expression(Column name to be enclosed within double quotes)
+             attributeName: sqlExpression
+             default: "ex. trunc(<column_name>, -5)"
+             isRequired: false
+        
+          isRequired: false
+          enableIf: "{% if (config.clusterKey and config.clusterKeyExpressions) %} true {% else %} false {% endif %}"
+
+    # Option to create a secured materialized view #
+
+        - type: toggleButton
+          attributeName: secureOption
+          displayName: Secure
+          default: false
+          isRequired: false
+
+        - type: toggleButton
+          attributeName: enableMasking
+          displayName: Enable Column Masking
+          default: false
+          
+
+        - displayName: Coalesce Storage Location of Data Masking Policy*
+          attributeName: maskStorageLocationName
+          type: textBox
+          enableIf: "{% if config.enableMasking %} true {% else %} false {% endif %}"
+
+        - type: textBox
+          displayName: Snowflake Masking Policy
+          attributeName: selMaskPolicy
+          enableIf: "{% if config.enableMasking and config.maskingOverride == false%} true {% else %} false {% endif %}"
+
+        - type: toggleButton
+          attributeName: maskingOverride
+          displayName: Override Masking columns
+          default: false
+          enableIf: "{% if config.enableMasking %} true {% else %} false {% endif %}"
+
+        - type: tabular
+          displayName: 'Override Masking Columns'
+          attributeName: ovmaskcolumn
+          columns:
+
+          -  type: columnDropdownSelector
+             displayName: Snowflake masking Column Name
+             attributeName: smaskcolumn
+             isRequired: false
+      
+          -  type: textBox
+             displayName: Snowflake masking policy Name
+             attributeName: spolicyname
+             isRequired: false
+      
+          isRequired: false
+          enableIf: "{% if (config.maskingOverride == true and config.enableMasking == true ) %} true {% else %} false {% endif %}"
+
+
+        - type: toggleButton
+          attributeName: enablerowacessMasking
+          displayName: Enable row level security
+          default: false
+
+        - displayName: Coalesce Storage Location of row access policy
+          attributeName: raccessStorageLocationName
+          type: textBox
+          enableIf: "{% if config.enablerowacessMasking %} true {% else %} false {% endif %}"
+
+        - type: label
+          attributeName: note
+          displayName: 
+                       "NOTE:
+                       \n
+                       Ensure that the columns selected in Coalesce align with the columns defined in the Snowflake Row Access Policy."
+          enableIf: "{%- if config.enablerowacessMasking -%} true {%- else -%} false {%- endif -%}"
+
+        - type: textBox
+          displayName: Row access policy name
+          attributeName: rowaccessPolicy
+          enableIf: "{% if config.enablerowacessMasking %} true {% else %} false {% endif %}"
+
+        - type: tabular
+          displayName: Row access column name
+          attributeName: racccolumn
+          columns:
+        
+          -  type: columnDropdownSelector
+             displayName: Column Name
+             attributeName: racccolumnname
+
+          isRequired: false
+          enableIf: "{% if config.enablerowacessMasking %} true {% else %} false {% endif %}"
+
+name: Masking Enabled Materialized View
+type: NodeType

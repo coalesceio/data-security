@@ -1,6 +1,16 @@
 fileVersion: 1
 id: "1"
 macroString: |+
+  {% if desiredState %}
+      {% set columns = desiredState.columns %}
+      {% set storageLocations = desiredState.storageLocations %}
+      {% set config = desiredState.config %}
+      {% set sources = desiredState.sources %}
+      {% set node = desiredState.node %}
+      {% set parameters = desiredState.parameters %}
+  {% endif %}
+
+
   {#------------------------------------------------------------------------------------------------------#}
   {#-- The following variable can be customized to include or remove column name patterns that  needs to be masked --#}
   {#-- It is used in the macro found below.                                                     --#}
@@ -21,6 +31,39 @@ macroString: |+
   {% endfor%}
   {{-col.match | trim-}}
   {%- endmacro -%}
+
+
+  {###########################################################################################
+  Purpose: Determines the correct Snowflake DROP object syntax based on the materialization type.
+   
+  Input: materialization (string): The Snowflake object type to be dropped
+    (e.g., table, view, materialized view, dynamic table, external table).
+   
+  Returns: string: The appropriate DROP object keyword with IF EXISTS
+    (e.g., 'table IF EXISTS', 'view IF EXISTS', 'materialized view IF EXISTS').
+  #############################################################################################}
+  {% macro dropMaterialization(materialization) %}
+      {%- if materialization | lower in ['table', 'transient table','temporary table', 'hybrid table'] -%}
+          TABLE IF EXISTS
+      {%- elif materialization | lower in ['view', 'secure view', 'run view', 'cortex search service'] -%}
+          VIEW IF EXISTS
+      {%- elif materialization | lower in ['dynamic table','transient dynamic table', 'dynamic iceberg table'] -%}
+          DYNAMIC TABLE IF EXISTS
+      {%- elif materialization | lower == 'materialized view' -%}
+          MATERIALIZED VIEW IF EXISTS
+      {%- elif materialization | lower == 'external table' -%}
+          EXTERNAL TABLE IF EXISTS
+      {%- elif materialization | lower == 'iceberg table' -%}
+          ICEBERG TABLE IF EXISTS
+      {%- elif materialization | lower == 'interactive table' -%}
+          INTERACTIVE TABLE IF EXISTS
+      {%- elif materialization | lower == 'stream' -%}
+          STREAM IF EXISTS
+      {%- else -%}
+          TABLE IF EXISTS
+      {%- endif %}
+  {% endmacro %}
+
 
 
 name: macro
