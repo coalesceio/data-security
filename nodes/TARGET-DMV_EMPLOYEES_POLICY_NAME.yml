@@ -24,7 +24,7 @@ operation:
     raccessStorageLocationName: ""
     rowaccessPolicy: ""
     secureOption: false
-    selMaskPolicy: emp_name_mask
+    selMaskPolicy: SSN_MASK_V2
     selectDistinct: false
   database: ""
   deployEnabled: true
